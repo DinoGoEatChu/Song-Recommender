@@ -66,10 +66,10 @@ def display_recommendations():
     for index, row in recommendations.iterrows():
         song_name = f"{row['name']} by {row['artists']}"
         song_link = row['link']
-        song_frame = tk.Frame(recommendations_list)
+        song_frame = tk.Frame(recommendations_list, background="#787276")
         song_frame.pack(fill=tk.X)
-        tk.Label(song_frame, text=song_name, width=85).pack(side=tk.LEFT)
-        tk.Button(song_frame, text="Listen", fg="blue", cursor="hand2", borderwidth=0,
+        tk.Label(song_frame, text=song_name, width=85, background="#787276").pack(side=tk.LEFT)
+        tk.Button(song_frame, text="Listen", background="#787276", fg="#D6CFC7", cursor="hand2", borderwidth=0,
                   command=lambda link=song_link: webbrowser.open(link)).pack(side=tk.RIGHT, padx=5)
         song_frames.append(song_frame)
 
@@ -88,44 +88,44 @@ def find_recommendations_by_cluster(fave_cluster):
 
 # Create the main window and widgets
 root = tk.Tk()
-root.geometry("800x500")
+root.geometry("800x525")
 root.title("Song Recommendation System")
 
 # Create a custom font
-custom_font = tkFont.Font(family="Helvetica", size=12)
+custom_font = tkFont.Font(family="Lucida Sans", size=12)
+# set the background color of the root window
+root.configure(background="#363636")
 
-fave_cluster_label = tk.Label(root, text="", font=custom_font)
+
+fave_cluster_label = tk.Label(root, text="", font=custom_font, background="#363636", foreground="#D9DDDC")
 fave_cluster_label.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 
-song_label = tk.Label(root, text="Favorite Song:", font=custom_font)
+song_label = tk.Label(root, text="Favorite Song:", font=custom_font, background="#363636", foreground="#D9DDDC")
 song_label.place(relx=0.25, rely=0.1, anchor=tk.CENTER)
 
-song_entry = tk.Entry(root, font=custom_font)
+song_entry = tk.Entry(root, font=custom_font, background="#363636", foreground="#D9DDDC")
 song_entry.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-artist_label = tk.Label(root, text="Artist:", font=custom_font)
+artist_label = tk.Label(root, text="Artist:", font=custom_font, background="#363636", foreground="#D9DDDC")
 artist_label.place(relx=0.25, rely=0.15, anchor=tk.CENTER)
 
-artist_entry = tk.Entry(root, font=custom_font)
+artist_entry = tk.Entry(root, font=custom_font, background="#363636", foreground="#D9DDDC")
 artist_entry.place(relx=0.5, rely=0.15, anchor=tk.CENTER)
 
-fave_cluster_entry = tk.Entry(root, font=custom_font)
+fave_cluster_entry = tk.Entry(root, font=custom_font, background="#363636", foreground="#D9DDDC")
 fave_cluster_entry.place(relx=0.5, rely=0.2, anchor=tk.CENTER)
 
-favorite_label = tk.Label(root, text="Favorite Cluster: ", font=custom_font)
+favorite_label = tk.Label(root, text="Favorite Cluster: ", font=custom_font, background="#363636", foreground="#D9DDDC")
 favorite_label.place(relx=0.25, rely=0.2, anchor=tk.CENTER)
 
-
-
-recommendations_button = tk.Button(root, text="Get Recommendations", font=custom_font, command=display_recommendations)
+recommendations_button = tk.Button(root, text="Get Recommendations", font=custom_font, background="#363636", foreground="#D9DDDC", cursor="hand2", command=display_recommendations)
 recommendations_button.place(relx=0.5, rely=0.3, anchor=tk.CENTER)
 
-recommendations_label = tk.Label(root, text="Recommendations: ", font=custom_font)
+recommendations_label = tk.Label(root, text="Recommendations: ", font=custom_font, background="#363636", foreground="#D9DDDC")
 recommendations_label.place(relx=0.25, rely=0.35, anchor=tk.CENTER)
 
-recommendations_list = tk.Listbox(root, height=12, width=75, font=custom_font)
+recommendations_list = tk.Listbox(root, height=12, width=65, font=custom_font, background="#787276", foreground="#D9DDDC")
 recommendations_list.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
-
 
 # Start the event loop
 root.mainloop()
